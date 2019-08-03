@@ -1,5 +1,9 @@
 # fwdis
+[![Build Status](https://travis-ci.org/amslabtech/fwdis.svg?branch=master)](https://travis-ci.org/amslabtech/fwdis)
+
 ros package for controlling fwdis robot
+
+See also [fwdis_mbed](https://github.com/amslabtech/fwdis_mbed)
 
 # for real robot
 Push emergency stop switch.
