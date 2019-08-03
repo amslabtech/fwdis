@@ -12,15 +12,11 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   tf
-  message_generation
   cmake_modules
   fwdis_msgs
-  pcl_ros
 )
 
 find_package(Eigen3 REQUIRED COMPONENTS system)
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(IPOPT ipopt REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -77,11 +73,11 @@ pkg_check_modules(IPOPT ipopt REQUIRED)
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-  geometry_msgs
-)
+# generate_messages(
+#   DEPENDENCIES
+#   std_msgs
+#   geometry_msgs
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -115,7 +111,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES four_wheel_drive_independent_steering
-   CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
+#  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
 #  DEPENDS system_lib
 )
 
@@ -129,7 +125,6 @@ include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
   ${Eigen3_INCLUDE_DIRS}
-  ${IPOPT_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -151,23 +146,10 @@ add_executable(teleop_joy src/teleop_joy.cpp)
 add_executable(fwdis_gazebo src/fwdis_gazebo.cpp)
 add_executable(holonomic_dwa src/holonomic_dwa.cpp)
 add_executable(sin_curve src/sin_curve.cpp)
-add_executable(path_to_local_goal src/path_to_local_goal.cpp)
-add_executable(diff_drive_sim src/diff_drive_sim.cpp)
-add_executable(robot_predictor src/robot_predictor.cpp)
-add_executable(dynamic_local_costmap src/dynamic_local_costmap.cpp)
-add_executable(avoidance_path_planner src/avoidance_path_planner.cpp)
 add_executable(waypoints_test src/waypoints_test.cpp)
-add_executable(diff_drive_mpc src/diff_drive_mpc.cpp)
-add_executable(base_costmap src/base_costmap.cpp)
-add_executable(obstacle_predictor_kf src/obstacle_predictor_kf.cpp)
-add_executable(collision_detector src/collision_detector.cpp)
-add_executable(trajectory_logger src/trajectory_logger.cpp)
-add_executable(fwdis_mpc src/fwdis_mpc.cpp)
 add_executable(fwdis_odom src/fwdis_odom.cpp)
 add_executable(fwdis_stopper src/fwdis_stopper.cpp)
-add_executable(velocity_arrow_to_obstacle src/velocity_arrow_to_obstacle.cpp)
 add_executable(odom_to_tf src/odom_to_tf.cpp)
-add_executable(local_costmap src/local_costmap.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -178,6 +160,9 @@ add_executable(local_costmap src/local_costmap.cpp)
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(fwdis_controller ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(fwdis_gazebo ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(fwdis_odom ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(${PROJECT_NAME}_node
@@ -199,43 +184,8 @@ target_link_libraries(holonomic_dwa
 target_link_libraries(sin_curve
   ${catkin_LIBRARIES}
 )
-target_link_libraries(path_to_local_goal
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(diff_drive_sim
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(robot_predictor
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(dynamic_local_costmap
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(avoidance_path_planner
-  ${catkin_LIBRARIES}
-)
 target_link_libraries(waypoints_test
   ${catkin_LIBRARIES}
-)
-target_link_libraries(diff_drive_mpc
-  ${catkin_LIBRARIES}
-  ${IPOPT_LIBRARIES}
-)
-target_link_libraries(base_costmap
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(obstacle_predictor_kf
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(collision_detector
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(trajectory_logger
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(fwdis_mpc
-  ${catkin_LIBRARIES}
-  ${IPOPT_LIBRARIES}
 )
 target_link_libraries(fwdis_odom
   ${catkin_LIBRARIES}
@@ -243,19 +193,9 @@ target_link_libraries(fwdis_odom
 target_link_libraries(fwdis_stopper
   ${catkin_LIBRARIES}
 )
-target_link_libraries(velocity_arrow_to_obstacle
-  ${catkin_LIBRARIES}
-)
 target_link_libraries(odom_to_tf
   ${catkin_LIBRARIES}
 )
-target_link_libraries(local_costmap
-  ${catkin_LIBRARIES}
-)
-
-add_dependencies(fwdis_controller fwdis_msgs_generate_messages_cpp)
-add_dependencies(fwdis_gazebo fwdis_msgs_generate_messages_cpp)
-add_dependencies(fwdis_odom fwdis_msgs_generate_messages_cpp)
 
 #############
 ## Install ##
