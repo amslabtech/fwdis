@@ -12,6 +12,9 @@ RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_releas
 
 RUN apt-get update
 
+RUN apt-get  install -y ros-kinetic-tf* \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /root
 
 RUN /bin/bash -c "mkdir -p catkin_ws/src"
@@ -25,5 +28,7 @@ RUN cd /root && echo source /root/catkin_ws/devel/setup.bash >> .bashrc
 ENV ROS_PACKAGE_PATH=/root/catkin_ws:$ROS_PACKAGE_PATH
 
 ENV ROS_WORKSPACE=/root/catkin_ws
+
+RUN ln -sf /usr/include/eigen3/Eigen /usr/include/Eigen
 
 WORKDIR /root
