@@ -1,5 +1,5 @@
 <launch>
 
-  <rosparam command="load" file="$(find four_wheel_drive_independent_steering)/config/fwdis.yaml"/>
+  <rosparam command="load" file="$(find fwdis)/config/fwdis.yaml"/>
 
 </launch>

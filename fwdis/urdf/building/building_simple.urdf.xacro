@@ -3,13 +3,13 @@
 <robot name="building_simple" xmlns:xacro="http://ros.org/wiki/xacro">
   <static>true</static>
 
-  <xacro:include filename="$(find four_wheel_drive_independent_steering)/urdf/common.xacro"/>
+  <xacro:include filename="$(find fwdis)/urdf/common.xacro"/>
   <xacro:macro name="building">
     <link name="building">
       <visual>
         <origin xyz="-5 -5 0" rpy="${M_PI/2} 0 0"/>
         <geometry>
-          <mesh filename="package://four_wheel_drive_independent_steering/meshes/STL/building_simple.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://fwdis/meshes/STL/building_simple.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="blue">
           <color rgba="0 0 0.7 1"/>
@@ -18,7 +18,7 @@
       <collision>
         <origin xyz="-5 -5 0" rpy="${M_PI/2} 0 0"/>
         <geometry>
-          <mesh filename="package://four_wheel_drive_independent_steering/meshes/STL/building_simple.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://fwdis/meshes/STL/building_simple.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>

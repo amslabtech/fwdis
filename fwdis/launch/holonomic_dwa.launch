@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg="four_wheel_drive_independent_steering" name="local_planner" type="holonomic_dwa">
+  <node pkg="fwdis" name="local_planner" type="holonomic_dwa">
     <remap from="/fwdis/local_goal" to="/move_base_simple/goal"/>
     <param name="MAX_VELOCITY" value="2.0"/>
     <param name="MAX_ACCELERATION" value="10.0"/>

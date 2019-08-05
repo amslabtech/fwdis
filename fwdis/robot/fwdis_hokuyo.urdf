@@ -2,10 +2,10 @@
 
 <robot name="fwdis" xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find four_wheel_drive_independent_steering)/urdf/base/base.urdf.xacro"/>
-  <xacro:include filename="$(find four_wheel_drive_independent_steering)/urdf/wheel/wheel.urdf.xacro"/>
-  <xacro:include filename="$(find four_wheel_drive_independent_steering)/urdf/steering/steering.urdf.xacro"/>
-  <xacro:include filename="$(find four_wheel_drive_independent_steering)/urdf/sensors/lrf.urdf.xacro"/>
+  <xacro:include filename="$(find fwdis)/urdf/base/base.urdf.xacro"/>
+  <xacro:include filename="$(find fwdis)/urdf/wheel/wheel.urdf.xacro"/>
+  <xacro:include filename="$(find fwdis)/urdf/steering/steering.urdf.xacro"/>
+  <xacro:include filename="$(find fwdis)/urdf/sensors/lrf.urdf.xacro"/>
 
   <!-- Link & Joint -->
   <link name="base_footprint"/>

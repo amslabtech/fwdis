@@ -2,7 +2,7 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find four_wheel_drive_independent_steering)/urdf/common.xacro"/>
+  <xacro:include filename="$(find fwdis)/urdf/common.xacro"/>
 
   <xacro:macro name="hokuyo" params="prefix parent *joint_origin">
 
@@ -15,13 +15,13 @@
   <link name="laser">
     <visual>
       <geometry>
-        <mesh filename="package://four_wheel_drive_independent_steering/meshes/STL/lrf.stl"/>
+        <mesh filename="package://fwdis/meshes/STL/lrf.stl"/>
       </geometry>
     </visual>
 
     <collision>
       <geometry>
-        <mesh filename="package://four_wheel_drive_independent_steering/meshes/STL/lrf.stl"/>
+        <mesh filename="package://fwdis/meshes/STL/lrf.stl"/>
       </geometry>
     </collision>
 

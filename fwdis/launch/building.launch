@@ -1,5 +1,5 @@
 <launch>
-  <arg name="model" default="$(find four_wheel_drive_independent_steering)/urdf/building/building_simple.urdf.xacro"/>
+  <arg name="model" default="$(find fwdis)/urdf/building/building_simple.urdf.xacro"/>
 
   <param name="robot_description2" command="$(find xacro)/xacro.py $(arg model)"/>
 

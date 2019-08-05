@@ -1,5 +1,5 @@
 <launch>
-  <arg name="model" default="$(find four_wheel_drive_independent_steering)/robot/fwdis.urdf"/>
+  <arg name="model" default="$(find fwdis)/robot/fwdis.urdf"/>
 
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
