@@ -146,7 +146,6 @@ add_executable(teleop_joy src/teleop_joy.cpp)
 add_executable(fwdis_gazebo src/fwdis_gazebo.cpp)
 add_executable(holonomic_dwa src/holonomic_dwa.cpp)
 add_executable(sin_curve src/sin_curve.cpp)
-add_executable(waypoints_test src/waypoints_test.cpp)
 add_executable(fwdis_odom src/fwdis_odom.cpp)
 add_executable(fwdis_stopper src/fwdis_stopper.cpp)
 add_executable(odom_to_tf src/odom_to_tf.cpp)
@@ -182,9 +181,6 @@ target_link_libraries(holonomic_dwa
   ${catkin_LIBRARIES}
 )
 target_link_libraries(sin_curve
-  ${catkin_LIBRARIES}
-)
-target_link_libraries(waypoints_test
   ${catkin_LIBRARIES}
 )
 target_link_libraries(fwdis_odom
