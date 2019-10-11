@@ -111,7 +111,7 @@ find_package(Eigen3 REQUIRED COMPONENTS system)
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES fwdis
-#  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
+   CATKIN_DEPENDS roscpp rospy std_msgs fwdis_msgs
 #  DEPENDS system_lib
 )
 
@@ -159,9 +159,9 @@ add_executable(odom_to_tf src/odom_to_tf.cpp)
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(fwdis_controller ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(fwdis_gazebo ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(fwdis_odom ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(fwdis_controller fwdis_msgs_generate_messages_cpp ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(fwdis_gazebo fwdis_msgs_generate_messages_cpp ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(fwdis_odom fwdis_msgs_generate_messages_cpp ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(${PROJECT_NAME}_node
